@@ -6,5 +6,13 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  root "chatrooms#index"
+  devise_scope :user do
+    authenticated :user do
+      root 'chatrooms#index'
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 end
