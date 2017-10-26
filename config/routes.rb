@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :direct_messages
+
   devise_scope :user do
     authenticated :user do
       root 'chatrooms#index'
